@@ -1,0 +1,123 @@
+/* 1. Define theme colors at the root */
+:root {
+    /* Default Dark Mode Colors */
+    --bg-gradient-start: rgb(25, 27, 109);
+    --bg-gradient-end: rgb(0, 0, 0);       /* Black */
+    --btn-bg: #355ad1;                     /* Dark Blue */
+    --btn-hover-bg: #4167f1;
+    --text-color: #ffffff;                 /* White text */
+    --accent-white: #ffffff;               /* Borders and glow */
+    --glow-color: rgba(255, 255, 255, 0.5);
+}
+
+/* 2. Overwrite colors for Light Mode */
+[data-theme="dark"] {
+    /* Changes black to blue, and dark blue to white */
+    --bg-gradient-start: #355ad1;          /* Your theme's primary blue */
+    --bg-gradient-end: #e6f0ff;            /* A soft light blue/white mix */
+    --btn-bg: #ffffff;                     /* White buttons */
+    --btn-hover-bg: #f0f4ff;
+    --text-color: #000000;                 /* Black text */
+    --accent-white: #355ad1;               /* Borders turn blue */
+    --glow-color: rgba(53, 90, 209, 0.5);  /* Glow turns blue */
+}
+
+/* 3. Apply variables to elements */
+body {
+    width: 75%;
+    min-height: 80vh;
+    padding: 5%;
+    background-image: linear-gradient(to top, var(--bg-gradient-start), var(--bg-gradient-end));
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    color: var(--text-color); /* Ensures general text respects theme */
+    transition: background-image 0.3s ease, color 0.3s ease;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+img {
+    width: 25%;
+    height: 50%;
+    border-radius: 50%;
+    border: 5px solid var(--accent-white);
+    box-shadow: 0 0 50px var(--glow-color);
+    position: absolute; 
+    left: 5%; 
+    top: 20%; 
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Base style template for all primary buttons */
+.btn-style {
+    background-color: var(--btn-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    height: 50px;
+    width: 200px; 
+    cursor: pointer;
+    position: absolute; 
+    transition: all 0.3s ease;
+}
+
+.btn-style:hover {
+    transform: scale(1.2);
+    background-color: var(--btn-hover-bg);
+    border: 5px solid var(--accent-white);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+/* Position mapping using your original coordinates */
+#abt-btn { left: 30%; top: 20%; }
+#skl-btn { left: 35%; top: 35%; }
+#prj-btn { left: 35%; top: 50%; }
+#cnt-btn { left: 30%; top: 65%; }
+
+#info {
+    margin-top: 20px;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    max-width: 600px;
+    text-align: center;
+    border: 2px solid var(--accent-white);
+    position: absolute; 
+    right: 5%; 
+    top: 20%; 
+    padding: 15px; /* Added spacing inside the box */
+    transition: color 0.3s ease, border 0.3s ease;
+}
+
+.toggle-btn {
+    background-color: var(--btn-bg);
+    color: var(--text-color);
+    border: 2px solid var(--accent-white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    height: 50px;
+    width: 200px; 
+    cursor: pointer;
+    position: absolute; 
+    right: 5%; 
+    top: 5%; 
+    transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+    transform: scale(1.2);
+    background-color: var(--btn-hover-bg);
+    border: 5px solid var(--accent-white);
+    box-shadow: 0 0 15px var(--glow-color);
+}
