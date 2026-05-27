@@ -87,6 +87,7 @@ img {
 #cnt-btn { left: 30%; top: 65%; }
 
 #info {
+    background-color: rgb(98, 147, 252);
     margin-top: 20px;
     color: var(--text-color);
     font-size: 1.2rem;
