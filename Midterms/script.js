@@ -14,41 +14,87 @@ themeToggleBtn.addEventListener('click', () => {
 });
 
 
-// --- Dynamic Content Box Logic ---
-
-// 1. Store your basic text content
 const contentData = {
-    'abt-btn': '<p>My name is Reige C. Payad. I am a 1st year college student studying IT.</p>',
-    'skl-btn': '<p>My Skills include: HTML5, CSS3, C++, 3D Modelling, Digital Art.</p>',
-    'prj-btn': '<p>Projects coming soon! Currently building an interactive portfolio and exploring creative frontend layout designs.</p>'
+    'abt-btn': '<p>My name is Reige C. Payad. I am a 1st year college student studying IT. I graduated from University of the East Caloocan, in the course of ICT. My hobies include drawing, watching movies and series, building model kits, online games, 3d modelling, and music.</p>',
+    
+    'skl-btn': `
+        <div class="skills-wrapper">
+            <h3>My Skills</h3>
+            
+            <div class="skill-item">
+                <div class="skill-info"><span>HTML5 / CSS3</span><span>90%</span></div>
+                <div class="progress-track"><div class="progress-bar" data-width="90%"></div></div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-info"><span>C++</span><span>73%</span></div>
+                <div class="progress-track"><div class="progress-bar" data-width="73%"></div></div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-info"><span>3D Modelling</span><span>60%</span></div>
+                <div class="progress-track"><div class="progress-bar" data-width="60%"></div></div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-info"><span>Digital Art</span><span>71%</span></div>
+                <div class="progress-track"><div class="progress-bar" data-width="71%"></div></div>
+            </div>
+        </div>
+    `,
+    
+   
+   'prj-btn': `
+        <div class="plain-projects">
+            <h3>My Projects</h3>
+            <img src="C:\\Users\\Reige Payad\\Pictures\\Screenshots\\Screenshot 2026-03-07 001034.png" alt="Project 1" class="raw-project-img">
+            <img src="C:\\Users\\Reige Payad\\Pictures\\Screenshots\\Screenshot 2026-05-28 183709.png" alt="Screenshot 2" class="raw-project-img">
+            <img src="C:\\Users\\Reige Payad\\Pictures\\Screenshots\\Screenshot 2026-05-05 193438.png" alt="Screenshot 3" class="raw-project-img">
+            <img src="C:\\Users\\Reige Payad\\Pictures\\Screenshots\\Screenshot 2026-05-19 114115.png" alt="Screenshot 4" class="raw-project-img">
+            <img src="C:\\Users\\Reige Payad\\Pictures\\Screenshots\\Screenshot 2026-02-24 111519.png" alt="Screenshot 5" class="raw-project-img">
+        </div>
+    `
 };
 
-// 2. Select the parent info container box (not just the paragraph)
+
 const infoBoxContainer = document.getElementById('info');
 
-// 3. Select all your section navigation buttons
+
 const navButtons = document.querySelectorAll('.btn-style');
 
-// 4. Handle clicks for all navigation buttons
+
 navButtons.forEach(button => {
     button.addEventListener('click', () => {
         const buttonId = button.id;
         
-        // If the contact button is clicked, generate the validation form
+        
         if (buttonId === 'cnt-btn') {
-            generateContactForm();
-        } else {
-            // Otherwise, load regular HTML text snippet
+            if (typeof generateContactForm === 'function') {
+                generateContactForm();
+            }
+        } else if (contentData[buttonId]) {
+           
             infoBoxContainer.innerHTML = contentData[buttonId];
+            
+        
+            if (buttonId === 'skl-btn') {
+                setTimeout(() => {
+                    const progressBars = infoBoxContainer.querySelectorAll('.progress-bar');
+                    progressBars.forEach(bar => {
+                        const targetWidth = bar.getAttribute('data-width');
+                        bar.style.width = targetWidth;
+                    });
+                }, 10);
+            }
         }
     });
 });
 
-// 5. Function to inject and handle the form
+
 function generateContactForm() {
     infoBoxContainer.innerHTML = `
         <div class="form-wrapper">
-            <h3 style="margin-top: 0; margin-bottom: 10px; font-size: 1.3rem;">Contact Me</h3>
+            <h3>Contact Me</h3>
             <form id="contact-form">
                 <div class="input-group">
                     <input type="text" id="form-name" placeholder="Your Name">
@@ -70,13 +116,13 @@ function generateContactForm() {
         </div>
     `;
 
-    // Immediately attach submission event logic to the newly built form
+    
     const form = document.getElementById('contact-form');
     
     form.addEventListener('submit', (e) => {
-        e.preventDefault(); // Stop page refresh
+        e.preventDefault(); 
         
-        // Target inputs and errors
+       
         const nameInput = document.getElementById('form-name');
         const emailInput = document.getElementById('form-email');
         const messageInput = document.getElementById('form-message');
@@ -85,7 +131,7 @@ function generateContactForm() {
         const emailError = document.getElementById('email-error');
         const messageError = document.getElementById('message-error');
         
-        // Reset old errors
+        // Reset old error messages
         nameError.textContent = '';
         emailError.textContent = '';
         messageError.textContent = '';
@@ -98,7 +144,7 @@ function generateContactForm() {
             isValid = false;
         }
         
-        // Email Field Validation (Regex rule matches standard email setups)
+        // Email Field Validation (Regex matches standard email formats)
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (emailInput.value.trim() === '') {
             emailError.textContent = 'Email field is required.';
@@ -114,12 +160,12 @@ function generateContactForm() {
             isValid = false;
         }
         
-        // Clear box on successful compilation
+        // Display Success Screen if validation checks pass
         if (isValid) {
             infoBoxContainer.innerHTML = `
                 <div style="display:flex; flex-direction:column; justify-content:center; height:100%;">
-                    <h3 style="color: #00ff66;">Message Dispatched!</h3>
-                    <p>Thank you, ${nameInput.value.trim()}. Your submission validation processed successfully.</p>
+                    <h3 style="color: #00ff66; margin-bottom: 10px;">Message Dispatched!</h3>
+                    <p>Thank you, ${nameInput.value.trim()}. Your validation processed successfully.</p>
                 </div>
             `;
         }
