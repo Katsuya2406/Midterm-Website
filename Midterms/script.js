@@ -17,8 +17,8 @@ themeToggleBtn.addEventListener('click', () => {
 
 // 1. Store your text content in an object using the button IDs as keys
 const contentData = {
-    'abt-btn': 'Hello! I am a passionate developer who loves creating interactive web experiences. Welcome to my portfolio!',
-    'skl-btn': 'My Skills include: HTML5, CSS3, JavaScript, Responsive Web Design, UI Layouts, and Frontend Optimization.',
+    'abt-btn': 'My name is Reige C. Payad. I am a 1st year college student studying IT. ',
+    'skl-btn': 'My Skills include: HTML5, CSS3, C++, 3D Modelling, Digital Art. ',
     'prj-btn': 'Projects coming soon! Currently building an interactive portfolio and exploring creative frontend layout designs.',
     'cnt-btn': 'Let\'s connect! You can reach me via email at yourname@example.com or find me on GitHub and LinkedIn.'
 };
