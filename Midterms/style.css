@@ -1,7 +1,7 @@
 /* 1. Define theme colors at the root */
 :root {
     /* Default Dark Mode Colors */
-    --bg-gradient-start: rgb(25, 27, 109);
+    --bg-gradient-start: #355ad1;
     --bg-gradient-end: rgb(0, 0, 0);       /* Black */
     --btn-bg: #355ad1;                     /* Dark Blue */
     --btn-hover-bg: #4167f1;
@@ -98,7 +98,8 @@ img {
     right: 5%; 
     top: 20%; 
     padding: 15px; /* Added spacing inside the box */
-    transition: color 0.3s ease, border 0.3s ease;
+    height: 45%;
+    width: 35%;
 }
 
 .toggle-btn {
@@ -121,4 +122,18 @@ img {
     background-color: var(--btn-hover-bg);
     border: 5px solid var(--accent-white);
     box-shadow: 0 0 15px var(--glow-color);
+}
+
+.em{
+    font-size: 25px;
+    position: absolute; 
+    left: 10%;
+    top: 90%; 
+}
+
+.nu{
+    font-size: 25px;
+    position: absolute; 
+    left: 30%;
+    top: 90%; 
 }
